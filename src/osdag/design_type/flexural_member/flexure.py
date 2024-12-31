@@ -1675,7 +1675,7 @@ class Flexure(Member):
                     Torsional=self.Torsional_res,
                     Warping=self.Warping,
                     length=length,
-                    depth=self.section_property.depth,
+                    depth=(self.section_property.depth/1000),
                     load=self.Loading,
                 )
                 print(f"Working 1 {self.effective_length}")
@@ -2029,9 +2029,7 @@ class Flexure(Member):
 
             else:
                 self.failed_design_dict = None
-                self.result_UR = self.optimum_section_ur[
-                    -1
-                ]  # optimum section which passes the UR check
+                self.result_UR = self.optimum_section_ur[-1]  # optimum section which passes the UR check
                 print(f"self.result_UR{self.result_UR}")
                 self.design_status = True
                 self.common_result(
